@@ -1,0 +1,12 @@
+﻿@model MusicShowSummaryViewModel
+
+<div id="cart">
+    <div class="logo"></div>
+    <div class="caption">
+        <div class="quantity">Quantity:@Model.Quantity</div>
+        <div class="price">Price:@Model.TotalPrice</div>
+    @Html.ActionLink("Checkout","Index","MusicCart",
+        new { returnUrl=Request.Url.PathAndQuery},
+        new { @class="btn-link cartlink"})
+    </div>
+</div>

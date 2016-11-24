@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Music>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(m => m.Name)</th>
+            <th>@Html.DisplayNameFor(m => m.Description)</th>
+            <th>@Html.DisplayNameFor(m => m.Category.Name)</th>
+            <th>@Html.DisplayNameFor(m => m.Artist.Name)</th>
+            <th>@Html.DisplayNameFor(m => m.Price)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(m => p.Name)</td>
+                <td>@Html.DisplayFor(m => p.Description)</td>
+                <td>@Html.DisplayFor(m => p.Category.Name)</td>
+                <td>@Html.DisplayFor(m => p.Artist.Name)</td>
+                <td>@Html.DisplayFor(m => p.Price)</td>
+                <td>
+                    @using (Html.BeginForm("AddToCart","MusicCart",FormMethod.Post))
+                    {
+                        @Html.Hidden("musicId",p.MusicId)
+                        @Html.Hidden("returnUrl", "/MusicShow/Show")
+                        <input type="submit" class="btn btn-primary" value="Add to cart" />
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

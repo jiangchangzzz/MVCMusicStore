@@ -1,0 +1,64 @@
+﻿@charset "utf-8";
+
+body{
+    margin:0 0 0 0;
+    padding:0 0 0 0;
+}
+
+#cart{
+    height:100px;
+    width:auto;
+    background-color:dodgerblue;
+}
+
+.logo{
+    float:left;
+    height:50px;
+    width:100px;
+    margin-top:50px;
+    margin-left:140px;
+    background:silver url(../Images/logo.jpg) no-repeat center;
+    background-size:cover;
+}
+
+.caption{
+    float:left;
+    color:white;
+    height:30px;
+    width:260px;
+    background-color:orange;
+    margin-top:60px;
+    margin-left:800px;
+    padding:5px 10px;
+}
+
+.caption .quantity{
+    float:left;
+    padding-right:10px;
+    border-right:1px solid silver;
+}
+
+.caption .price{
+    float:left;
+    padding-left:10px;
+    padding-right:10px;
+    border-right:1px solid silver;
+}
+
+.caption .cartlink{
+    float:right;
+    padding-left:10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

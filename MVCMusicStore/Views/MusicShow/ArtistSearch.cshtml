@@ -1,0 +1,11 @@
+﻿@model IEnumerable<Artist>
+
+<ul>
+    @foreach (var p in Model)
+    {
+    <li>
+        <span>@Html.DisplayFor(m => p.ArtistId)</span>
+        <span>@Html.DisplayFor(m => p.Name)</span>
+    </li>
+    }
+</ul>

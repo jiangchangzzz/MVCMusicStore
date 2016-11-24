@@ -1,0 +1,51 @@
+﻿@model Cart
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Item</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>SubTotal</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in Model.Lines)
+        {
+        <tr>
+            <td>@Html.DisplayFor(m=>p.Music.Name)</td>
+            <td>@Html.DisplayFor(m=>p.Quantity)</td>
+            <td>@Html.DisplayFor(m=>p.Music.Price)</td>
+            <td>@((p.Music.Price*p.Quantity).ToString("c"))</td>
+            <td>
+                @using (Html.BeginForm("RemoveFromCart", "MusicCart", FormMethod.Post))
+                {
+                    @Html.Hidden("musicId",p.Music.MusicId)
+                    @Html.Hidden("returnUrl",ViewBag.ReturnUrl as string)
+                    <input class="btn btn-default" type="submit" value="Remove" />
+                }
+            </td>
+        </tr>
+        }
+    </tbody>
+    <tfoot>
+       <tr>
+           <td class="col-md-2">Total:</td>
+           <td class="col-md-offset-8 col-md-2">@Model.ComputeTotalValue().ToString("c")</td>
+       </tr>
+    </tfoot>
+</table>
+
+<div class="row">
+    <div class="col-md-2">
+        <a href="@ViewBag.ReturnUrl" class="btn btn-default">Return</a>
+    </div>
+</div>
+
+

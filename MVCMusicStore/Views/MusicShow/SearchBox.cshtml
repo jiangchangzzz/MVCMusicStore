@@ -1,0 +1,33 @@
+﻿<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">艺术家搜索</h3>
+    </div>
+    <div class="panel-body">
+        @using (Ajax.BeginForm("ArtistSearch",
+            "MusicShow",
+            null,
+            new AjaxOptions
+            {
+                InsertionMode=InsertionMode.Replace,
+                HttpMethod="GET",
+                OnFailure="searchFailed",
+                LoadingElementId="ajax-loader",
+                UpdateTargetId="searchResult",
+            },
+            new { @class="form"}))
+        {
+        <div class="form-inline">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <input class="form-control" type="text" name="artistName" placeholder="请输入艺术家名" />
+                    <input class="btn btn-success" type="submit" value="搜索" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <img class="thumbnail center-block" id="ajax-loader" src="~/Images/loading.gif" style="display:none"/>
+        </div>
+        }
+        <div id="searchResult"></div>
+    </div>
+</div>

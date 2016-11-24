@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Category>
+
+<div class="btn-group-vertical" style="width:150px">
+    @Ajax.ActionLink("Category",
+           "List",
+            null,
+            new AjaxOptions
+            {
+                UpdateTargetId = "list",
+                InsertionMode = InsertionMode.Replace,
+                HttpMethod = "POST"
+            },
+            new { @class = "btn btn-primary" })
+    @foreach (var m in Model)
+    {
+        @Ajax.ActionLink(m.Name,
+           "List",
+            new { categoryId=m.CategoryId},
+            new AjaxOptions
+            {
+                UpdateTargetId= "list",
+                InsertionMode=InsertionMode.Replace,
+                HttpMethod="GET"
+            },
+            new { @class="btn btn-default"})
+    }
+</div>
+
